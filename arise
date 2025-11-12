@@ -48,7 +48,7 @@ echo
 [[ -d $output_dir ]] && [[ "$force_overwrite" == true ]] && rm -rf $output_dir
 mkdir -p $output_dir
 [[ -n "$(ls -A $output_dir)" ]] && echo -e 'ERROR: The build output directory "/$output_dir" is not empty. Program aborted to prevent overwrite of existing data.\n\nPlease empty the output directory before running Arise again or run your command with the "-f" flag to overwrite the existing output (dangerous).' && exit 1
-cp -r "arise-source/". "$output_dir"
+cp -r "$source_dir". "$output_dir"
 ## Set an absolute path for $config
 config=$(realpath $config)
 
