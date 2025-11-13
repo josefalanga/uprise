@@ -76,6 +76,12 @@ if [[ "$arise_build" == "full" ]] || [[ "$arise_build" == "sitemap_only" ]]; the
         echo " DONE."
 fi
 
+if [[ -f "$output_dir/404.md" ]] && ([[ "$arise_build" == "full" ]] || [[ "$arise_build" == "404_only" ]]); then
+        echo -n "Building 404 page..."
+        build_page $output_dir/404.md 404.html || { echo "ERROR: An error was encountered while building the 404 page. Aborting build cycle."; exit 1; }
+        echo " DONE."
+fi
+
 if [[ "$keep_source" == false ]]; then
         echo -n "Cleaning up build source files from output..."
         # Remove every page that we built from as part of the build cycle
